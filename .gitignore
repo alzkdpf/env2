@@ -1,0 +1,11 @@
+/dist/
+/work/
+/env2
+*.test
+.env
+.env.*
+*.env
+*.env.*
+!*.enc
+!*.example
+.env2/
