@@ -203,7 +203,7 @@ func (m Model) View() string {
 	}
 	b.WriteString(fmt.Sprintf("\n  %d files · secrets are never displayed\n", len(m.entries)))
 	if len(m.pending) > 0 {
-		b.WriteString(warning.Render("\n  Apply the following actions? Existing destinations will be replaced.\n"))
+		b.WriteString("\n" + warning.Render("  Apply the following actions? Existing destinations will be replaced.") + "\n")
 		for i, j := range m.pending {
 			if i >= 3 {
 				b.WriteString(fmt.Sprintf("  … and %d more\n", len(m.pending)-i))

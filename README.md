@@ -21,7 +21,7 @@ If necessary, add `export PATH="$HOME/.local/bin:$PATH"` to your shell configura
 Pin both the installer and binary version:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/alzkdpf/env2/v0.1.0/install.sh | sh -s -- v0.1.0
+curl -fsSL https://raw.githubusercontent.com/alzkdpf/env2/v0.1.1/install.sh | sh -s -- v0.1.1
 ```
 
 Review `install.sh` before executing it if your environment requires script review.
@@ -161,7 +161,7 @@ passphrase alone is insufficient. Noninteractive commands return a nonzero exit 
   by decrypting the versions separately; do not merge the ciphertext text.
 - Re-encryption cannot revoke copies of old ciphertext or a stolen key. Rotate actual
   service credentials after a leak. Key rotation and passphrase changes have no built-in
-  command in v0.1.0. There is no independent security audit yet.
+  command in v0.1.1. There is no independent security audit yet.
 - Published checksums detect corruption; they do not independently authenticate a
   compromised GitHub account or installer. No signing or provenance claim is made.
 
