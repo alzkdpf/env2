@@ -82,11 +82,17 @@ contain `.env` followed by a dot or the end of the name. `.env.example`, `.env.s
 `.env.template` and their dotted variants are excluded. `.git`, `.env2`, `node_modules`,
 `vendor`, `.venv`, `dist`, `build`, symlinks and non-regular files are skipped.
 
-- Plaintext only: encrypt.
-- Encrypted only: decrypt.
-- Both, same bytes: do not rewrite the ciphertext.
-- Both, different bytes: require an explicit direction.
-- Wrong key, invalid or damaged ciphertext: stop; preserve the existing destination.
+| 상태 | 실제 파일 상태 | `Enter`를 눌렀을 때 |
+| --- | --- | --- |
+| `plaintext only` | `.env`만 있음 | `.env.enc` 생성 제안 |
+| `encrypted only` | `.env.enc`만 있음 | `.env` 복원 제안 |
+| `different` | 둘 다 있지만 내용이 다름 | 중단하고 방향 선택 안내 |
+| `in sync` | 둘 다 있고 복호화한 내용이 원본과 같음 | 변경하지 않음 |
+| `error` | 키 불일치, 암호문 손상 등으로 처리 불가 | 오류 표시 후 중단 |
+
+`Enter`는 작업을 제안하며, 확인 화면에서 `y`를 눌러야 적용됩니다.
+`different` 상태에서는 `e`(평문 → 암호문) 또는 `d`(암호문 → 평문)로 방향을 선택합니다.
+오류가 발생하면 기존 파일은 보존됩니다.
 
 Original bytes, comments, ordering, quotes and line endings are preserved. Files are
 limited to 16 MiB of plaintext. Modification times are not used to choose a winner.
